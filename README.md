@@ -1,7 +1,6 @@
 Advanced Lane Finding
 
-
-In this project, I write a software pipeline to identify the lane boundaries in a video which can deal with curved lane lines and sudden changes of light shades.
+In this project, We develop the pipeline and apply the pipeline to a real video stream to track the changes of the lane lines. The video comes from a camera mounted on the center of a car which recorded the real road conditions. After we apply the pipeline the to video, the automatically detected lane lines from our program will be superposed onto each frames of the original video. The main tools we are using in this project is **computer vision** techniques.
 
 The goals / steps of this project are the following:
 
@@ -52,9 +51,9 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image. Here's an example of my output for this step. 
+I used a combination of color and gradient thresholds to generate a binary image. Through the observation of different color components of the images, I notice the S-channel in HSV color space can conserve the most of the image features that I set threshold on S-channel for color constraint, and I apply sobel operation for edge detections for gradient constraint. After that I stack all these extracted features together.
 
-For images taken from recorded camera mounted on the car,  apply distortion correction and create thresholded binary images
+For images taken from recorded camera mounted on the car,  after apply the distortion correction and create thresholded binary images, the output is like:
 
 ![binary images][image2]
 
@@ -70,7 +69,7 @@ I masked the region of interest (the dashed polygon in the left figure) and perf
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Detecting the lane lines within the region of interest from the pespective image using **sliding window techniques** and then I did some other stuff and fit my lane lines with a 2nd order polynomial interpolation to fit the line functions.
+Detecting the lane lines within the region of interest from the pespective image using **sliding window techniques**, I check the **histogram of binary images along the x-axis** and pick the peak value as the starting points of the right/left lane lines, then I slided the detecting window vertically and selected all the **non-zero pixels** in x and y axis within the window, for all these pixels I use **2nd order polynomial fitting** to get the line functions.
 
 ![fit lane][image5]
 
