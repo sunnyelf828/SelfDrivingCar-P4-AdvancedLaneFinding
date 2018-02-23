@@ -1,7 +1,7 @@
 Advanced Lane Finding
 
 
-In this project, your goal is to write a software pipeline to identify the lane boundaries in a video, but the main output or product we want you to create is a detailed writeup of the project.  Creating a great writeup:
+In this project, I write a software pipeline to identify the lane boundaries in a video which can deal with curved lane lines and sudden changes of light shades.
 
 The goals / steps of this project are the following:
 
